@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ศูนย์ Refer รพ.ห้วยแถลง</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b3a7a">
+<meta name="apple-mobile-web-app-title" content="ศูนย์ Refer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+  :root { --navy: #0b3a7a; --ink: #13263b; --muted: #5f7186; --line: #e0e8f0; --bg: #f2f6fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: Tahoma, 'Noto Sans Thai', sans-serif; background: var(--bg); color: var(--ink); text-align: center; }
+  .card { background: #fff; border-radius: 18px; padding: 28px 24px; max-width: 360px; width: 100%; box-shadow: 0 10px 28px rgba(11, 58, 122, .10); }
+  img { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 16px rgba(11, 58, 122, .25); }
+  h1 { font-size: 20px; margin: 16px 0 4px; color: var(--navy); }
+  .sub { margin: 0; color: var(--muted); font-size: 14px; }
+  #msg { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 16px 0 0; }
+  a.go { display: block; margin-top: 16px; padding: 13px; border-radius: 12px; background: linear-gradient(135deg, #072a5c, #0b4a8b 60%, #10a99d); color: #fff; text-decoration: none; font-weight: bold; font-size: 16px; }
+  a.go:focus-visible { outline: 3px solid #10a99d; outline-offset: 3px; }
+  #howto { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--muted); }
+  #howto b { color: var(--navy); }
+  #howto p { margin: 6px 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="icon-192.png" alt="ไอคอนศูนย์ Refer รพ.ห้วยแถลง">
+  <h1>ศูนย์ Refer และ พขร.</h1>
+  <p class="sub">โรงพยาบาลห้วยแถลง</p>
+  <p id="msg">กำลังเปิดระบบ…</p>
+  <a class="go" id="go" href="#">เปิดระบบ</a>
+  <div id="howto" hidden>
+    <p><b>เพิ่มไอคอนลงหน้าจอจากหน้านี้</b></p>
+    <p>iPhone: กดปุ่มแชร์ ⬆︎ ของ Safari → เพิ่มไปยังหน้าจอโฮม</p>
+    <p>Android: กด ⋮ ของ Chrome → เพิ่มลงในหน้าจอหลัก</p>
+  </div>
+</div>
+<script>
+  // ลิงก์ HUB (แอป พขร. ใน Apps Script) — เปลี่ยนเฉพาะเมื่อลิงก์ deploy เปลี่ยน
+  const APP_URL = 'https://script.google.com/macros/s/AKfycbyVJMgo0oy3I61YUumes6w5CDBaQHkFWfGMB2jZbCUcDPJMMidYgcGGcpjYCQansIj5/exec';
+  document.getElementById('go').href = APP_URL;
+  // เปิดจากไอคอนบนหน้าจอ: พาเข้าระบบทันที / เปิดจากเบราว์เซอร์: แสดงวิธีเพิ่มไอคอนจากหน้านี้
+  const fromHome = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  if (fromHome) {
+    setTimeout(() => { location.href = APP_URL; }, 300);
+  } else {
+    document.getElementById('msg').textContent = 'กดปุ่มด้านล่างเพื่อเข้าระบบ';
+    document.getElementById('howto').hidden = false;
+  }
+</script>
+</body>
+</html>
