@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ศูนย์ Refer รพ.ห้วยแถลง</title>
+<title>ศูนย์ Refer และ พขร. รพ.ห้วยแถลง</title>
 <link rel="icon" type="image/png" href="favicon.png?v=3">
 <link rel="apple-touch-icon" href="icon-180.png?v=3">
 <link rel="manifest" href="manifest.json?v=3">
@@ -12,47 +12,186 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --navy: #0b3a7a; --ink: #13263b; --muted: #5f7186; --line: #e0e8f0; --bg: #f2f6fa; }
+  :root { --navy: #0b3a7a; --navy-2: #15428e; --ink: #13263b; --muted: #5f7186; --line: #dbe4ee; --line-2: #b9c7d6; --bg: #f2f6fa; --chip: #eef3f9; --bad: #c62828; --teal: #10a99d; }
   * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: Tahoma, 'Noto Sans Thai', sans-serif; background: var(--bg); color: var(--ink); text-align: center; }
-  .card { background: #fff; border-radius: 18px; padding: 28px 24px; max-width: 360px; width: 100%; box-shadow: 0 10px 28px rgba(11, 58, 122, .10); }
-  img { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 16px rgba(11, 58, 122, .25); }
-  h1 { font-size: 20px; margin: 16px 0 4px; color: var(--navy); }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; font-family: 'IBM Plex Sans Thai', Tahoma, 'Noto Sans Thai', sans-serif; background: var(--bg); color: var(--ink); }
+  .card { background: #fff; border-radius: 18px; padding: 26px 22px 22px; max-width: 400px; width: 100%; box-shadow: 0 10px 28px rgba(11, 58, 122, .10); }
+  .brand { text-align: center; }
+  .brand img { width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 6px 16px rgba(11, 58, 122, .25); }
+  h1 { font-size: 21px; margin: 14px 0 2px; color: var(--navy); }
   .sub { margin: 0; color: var(--muted); font-size: 14px; }
-  #msg { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 16px 0 0; }
-  a.go { display: block; margin-top: 16px; padding: 13px; border-radius: 12px; background: linear-gradient(135deg, #072a5c, #0b4a8b 60%, #10a99d); color: #fff; text-decoration: none; font-weight: bold; font-size: 16px; }
-  a.go:focus-visible { outline: 3px solid #10a99d; outline-offset: 3px; }
-  #howto { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .login { margin-top: 20px; text-align: left; }
+  .login h2 { margin: 0 0 2px; font-size: 18px; }
+  .hint { margin: 0 0 12px; font-size: 13.5px; color: var(--muted); }
+  .tabs { display: flex; gap: 4px; padding: 4px; margin: 0 0 14px; border-radius: 14px; background: var(--chip); border: 1px solid var(--line); }
+  .tabs button { flex: 1; min-width: 0; font: inherit; font-size: 14px; font-weight: 600; padding: 9px 4px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(16, 35, 61, .14); }
+  .f { display: grid; gap: 5px; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+  select, input { font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1px solid var(--line-2); border-radius: 12px; }
+  select { width: 100%; padding: 10px 12px; font-weight: 500; }
+  select:disabled { color: var(--muted); background: #f7f9fc; }
+  .who { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+  .who label { position: relative; display: grid; justify-items: center; gap: 6px; padding: 10px 4px 8px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 500; text-align: center; }
+  .who input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .who label.on { border-color: var(--navy-2); background: #eaf1fb; box-shadow: inset 0 0 0 1.5px var(--navy-2); }
+  .who label:focus-within { outline: 3px solid var(--teal); outline-offset: 2px; }
+  .av { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--navy-2); color: #fff; font-weight: 600; font-size: 14px; }
+  .pin { display: flex; gap: 8px; margin-top: 12px; }
+  .pin input { flex: 1; min-width: 0; font-size: 22px; letter-spacing: 8px; text-align: center; padding: 10px; }
+  .pin button, .go { flex: none; font: inherit; font-size: 16px; font-weight: 600; padding: 0 18px; border: 0; border-radius: 12px; color: #fff; cursor: pointer; background: linear-gradient(135deg, #072a5c, #0b4a8b 60%, var(--teal)); }
+  .pin button:disabled { opacity: .6; cursor: default; }
+  :is(select, input, button, a):focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  .note { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .msg { margin-top: 10px; font-size: 14px; color: var(--bad); }
+  .msg:empty { display: none; }
+  .wait { padding: 8px 0; color: var(--muted); font-size: 14.5px; text-align: center; }
+  .open { margin-top: 18px; text-align: center; }
+  .open p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+  .open b { color: var(--ink); }
+  .link { font: inherit; font-size: 14px; color: var(--navy-2); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+  .adm { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); text-align: center; }
+  .adm a { color: var(--navy-2); }
+  #howto { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--muted); text-align: center; }
   #howto b { color: var(--navy); }
   #howto p { margin: 6px 0; }
+  .foot { margin: 14px 0 0; font-size: 12.5px; color: var(--muted); text-align: center; }
+  @media (prefers-reduced-motion: no-preference) { .pin button { transition: opacity .15s; } }
 </style>
 </head>
 <body>
-<div class="card">
-  <img src="icon-192.png?v=3" alt="Transport &amp; Referral System, Huai Thalaeng Hospital">
-  <h1>ศูนย์ Refer และ พขร.</h1>
-  <p class="sub">โรงพยาบาลห้วยแถลง</p>
-  <p id="msg">กำลังเปิดระบบ…</p>
-  <a class="go" id="go" href="#">เปิดระบบ</a>
+<main class="card">
+  <div class="brand">
+    <img src="icon-192.png?v=3" alt="Transport &amp; Referral System, Huai Thalaeng Hospital">
+    <h1>ศูนย์ Refer และ พขร.</h1>
+    <p class="sub">โรงพยาบาลห้วยแถลง</p>
+  </div>
+  <div id="box"></div>
   <div id="howto" hidden>
     <p><b>เพิ่มไอคอนลงหน้าจอจากหน้านี้</b></p>
     <p>iPhone: กดปุ่มแชร์ ⬆︎ ของ Safari → เพิ่มไปยังหน้าจอโฮม</p>
     <p>Android: กด ⋮ ของ Chrome → เพิ่มลงในหน้าจอหลัก</p>
   </div>
-</div>
+  <p class="foot">พัฒนาโดย พว.วัชรี พิมพ์ภักดี</p>
+</main>
 <script>
-  // ลิงก์ HUB (แอป พขร. ใน Apps Script) — เปลี่ยนเฉพาะเมื่อลิงก์ deploy เปลี่ยน
+  // หน้าหลัก HUB (แอป พขร. ใน Apps Script) — เปลี่ยนเฉพาะเมื่อลิงก์ deploy เปลี่ยน
   const APP_URL = 'https://script.google.com/macros/s/AKfycbyVJMgo0oy3I61YUumes6w5CDBaQHkFWfGMB2jZbCUcDPJMMidYgcGGcpjYCQansIj5/exec';
-  document.getElementById('go').href = APP_URL;
-  // เปิดจากไอคอนบนหน้าจอ: พาเข้าระบบทันที / เปิดจากเบราว์เซอร์: แสดงวิธีเพิ่มไอคอนจากหน้านี้
-  const fromHome = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
-  if (fromHome) {
-    setTimeout(() => { location.href = APP_URL; }, 300);
-  } else {
-    document.getElementById('msg').textContent = 'กดปุ่มด้านล่างเพื่อเข้าระบบ';
-    document.getElementById('howto').hidden = false;
+  /* เข้าสู่ระบบที่หน้านี้ → ส่งต่อเข้าหน้าหลักด้วยรหัสใช้ครั้งเดียว (?s=) ไม่ต้องใส่ PIN ซ้ำ
+     เครื่องนี้จำการเข้าสู่ระบบไว้ 30 วัน · ออกจากระบบที่หน้าหลัก = กลับมาหน้านี้ (?out=1) */
+  const KEY = 'htlGate';
+  const st = {
+    get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v){ try { localStorage.setItem(k, v); } catch (e) {} },
+    del(k){ try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  const plain = n => String(n || '').replace(/^(นางสาว|น\.ส\.|นส\.|นาง|นาย)\s*/, '');
+  const initial = n => { const c = plain(n).replace(/^[ะ-ฺเ-ไ็-๎]+/, ''); return c ? c[0] : '•'; };
+  async function api(fn, args){
+    const r = await fetch(APP_URL, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify({fn, args: args || []})});
+    if (!r.ok) throw new Error('เชื่อมต่อระบบไม่สำเร็จ (' + r.status + ')');
+    const j = await r.json();
+    if (j.err) throw new Error(j.err);
+    return j.ok;
   }
+  const errText = e => String((e && e.message) || e).replace(/^\[AUTH\]\s*/, '').replace(/^(Exception|Error):\s*/, '');
+  const fromHome = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+  const go = ho => { location.href = APP_URL + '?via=icon' + (ho ? '&s=' + encodeURIComponent(ho) : ''); };
+  const saved = () => { try { const j = JSON.parse(st.get(KEY) || 'null'); return j && j.t && j.e > Date.now() ? j : null; } catch (e) { return null; } };
+
+  let K = st.get('htlLastK') === 'd' ? 'd' : 's', info = null, infoErr = '', busy = false, msg = '', unit = st.get('htlLastUnit') || '', name = '', pick = st.get('htlLastDrv') || '', pinVal = '', opening = null;
+
+  function form(){
+    const tabs = [['s', 'พยาบาล / เจ้าหน้าที่'], ['d', 'พขร.']].map(([k, l]) => `<button type="button" role="tab" data-k="${k}" aria-selected="${K === k}">${l}</button>`).join('');
+    const head = `<section class="login" aria-labelledby="lgT"><h2 id="lgT">เข้าสู่ระบบ</h2><p class="hint">เข้าครั้งเดียว เครื่องนี้จำไว้ 30 วัน</p><div class="tabs" role="tablist" aria-label="ประเภทผู้ใช้">${tabs}</div>`;
+    const m = `<div class="msg" id="msg" role="alert">${esc(msg)}</div>`;
+    const adm = `<p class="adm">ผู้ดูแลระบบ · <a href="${APP_URL}?via=icon">เข้าสู่ระบบที่หน้าหลัก</a></p>`;
+    if (!info) return head + `<div class="wait">${infoErr ? 'โหลดรายชื่อไม่สำเร็จ: ' + esc(infoErr) + ' <button type="button" class="link" data-act="retry">ลองใหม่</button>' : 'กำลังโหลดรายชื่อ…'}</div>${m}${adm}</section>`;
+    const pin = `<div class="pin"><input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="PIN" aria-label="PIN ของคุณ" value="${esc(pinVal)}"><button type="button" id="goBtn" data-act="login"${busy ? ' disabled' : ''}>${busy ? 'กำลังตรวจสอบ…' : 'เข้าสู่ระบบ'}</button></div>`;
+    if (K === 'd'){
+      const list = info.drivers || [];
+      return head + `<fieldset class="who" aria-label="เลือกชื่อของคุณ">${list.map(x => `<label class="${pick === x.id ? 'on' : ''}"><input type="radio" name="who" value="${esc(x.id)}"${pick === x.id ? ' checked' : ''}><span class="av" aria-hidden="true">${esc(initial(x.n))}</span><span>${esc(x.n)}</span></label>`).join('')}</fieldset>${pin}<p class="note">PIN ของแอป พขร.</p>${m}${adm}</section>`;
+    }
+    const units = info.units || [], u = units.find(x => x.u === unit);
+    return head + `<label class="f" for="unit"><span>หน่วยงาน</span><select id="unit"><option value="">— เลือกหน่วยงาน —</option>${units.map(x => `<option value="${esc(x.u)}"${x.u === unit ? ' selected' : ''}>${esc(x.u)}</option>`).join('')}</select></label>
+      <label class="f" for="nm"><span>ชื่อ</span><select id="nm"${u ? '' : ' disabled'}><option value="">${u ? '— เลือกชื่อของคุณ —' : 'เลือกหน่วยงานก่อน'}</option>${u ? u.names.map(n => `<option value="${esc(n)}"${n === name ? ' selected' : ''}>${esc(plain(n))}</option>`).join('') : ''}</select></label>
+      ${pin}<p class="note">PIN เดียวกับระบบลงเวลาเข้างานของกลุ่มการพยาบาล</p>${m}${adm}</section>`;
+  }
+  function render(){
+    if (opening){
+      $('#box').innerHTML = `<div class="open"><p>กำลังเปิดระบบ…<br>เข้าสู่ระบบในชื่อ <b>${esc(plain(opening.n))}</b></p><p><button type="button" class="link" data-act="switch">ไม่ใช่ฉัน · เปลี่ยนผู้ใช้</button></p></div>`;
+      return;
+    }
+    $('#box').innerHTML = form();
+    if (msg && !busy){ const p = $('#pin'); if (p && (K === 'd' ? pick : name)) p.focus(); }
+  }
+  function loadInfo(){
+    if (info) return;
+    infoErr = '';
+    api('gateInfo').then(r => {
+      info = r || {drivers: [], units: []};
+      if (unit && !info.units.some(x => x.u === unit)) unit = '';
+      const ln = st.get('htlLastName'), u = info.units.find(x => x.u === unit);
+      if (u && ln && u.names.indexOf(ln) >= 0) name = ln;
+      if (pick && !(info.drivers || []).some(x => x.id === pick)) pick = '';
+      render();
+    }).catch(e => { infoErr = errText(e); render(); });
+  }
+  function showForm(m){ opening = null; msg = m || ''; render(); loadInfo(); }
+  async function login(){
+    if (busy) return;
+    const pin = String(pinVal || '').trim();
+    const err = K === 'd' && !pick ? 'แตะชื่อของคุณ' : K === 's' && !name ? 'เลือกหน่วยงานและชื่อของคุณ' : !/^\d{4,8}$/.test(pin) ? 'ใส่ PIN 4–8 หลัก' : '';
+    if (err){ msg = err; render(); return; }
+    busy = true; msg = ''; if (document.activeElement) document.activeElement.blur(); render();
+    try {
+      const r = await api('gateLogin', [K === 'd' ? {k: 'd', id: pick, pin} : {k: 's', name, pin}]);
+      st.set('htlLastK', K);
+      if (K === 'd') st.set('htlLastDrv', pick); else { st.set('htlLastUnit', unit); st.set('htlLastName', name); }
+      st.set(KEY, JSON.stringify({t: r.t, k: r.k, i: r.i, n: r.n, u: r.u, e: r.e}));
+      pinVal = ''; opening = r; render();
+      go(r.ho);
+    } catch (e){ busy = false; pinVal = ''; msg = errText(e); render(); }
+  }
+  /* เปิดจากไอคอนอีกครั้ง: เข้าสู่ระบบไว้แล้ว → ขอรหัสส่งต่อใหม่แล้วเข้าหน้าหลักเลย */
+  async function resume(s){
+    opening = s; render();
+    try { const ho = await api('gateHand', [s.t]); if (opening === s) go(ho); }
+    catch (e){
+      if (opening !== s) return;
+      if (/^\[AUTH\]/.test(String(e && e.message))){ st.del(KEY); showForm('การเข้าสู่ระบบหมดอายุหรือเปลี่ยน PIN แล้ว กรุณาเข้าสู่ระบบใหม่'); }
+      else go('');   // เชื่อมต่อไม่ได้ชั่วคราว: เปิดหน้าหลักตามปกติ
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-k]'); if (t){ K = t.dataset.k; msg = ''; render(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'login') login();
+    else if (a.dataset.act === 'retry'){ info = null; loadInfo(); render(); }
+    else if (a.dataset.act === 'switch'){ st.del(KEY); showForm(''); }
+  });
+  document.addEventListener('change', e => {
+    const el = e.target;
+    if (el.name === 'who'){ pick = el.value; msg = ''; document.querySelectorAll('.who label').forEach(l => l.classList.toggle('on', l.contains(el))); const p = $('#pin'); if (p) setTimeout(() => p.focus(), 30); }
+    else if (el.id === 'unit'){ unit = el.value; name = ''; msg = ''; render(); const n = $('#nm'); if (n && !n.disabled) n.focus(); }
+    else if (el.id === 'nm'){ name = el.value; msg = ''; const p = $('#pin'); if (name && p) setTimeout(() => p.focus(), 30); }
+  });
+  document.addEventListener('input', e => { if (e.target.id === 'pin'){ e.target.value = e.target.value.replace(/\D/g, '').slice(0, 8); pinVal = e.target.value; } });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'pin'){ e.preventDefault(); login(); } });
+  // กลับมาหน้านี้ (ปัดกลับ/แท็บเก่า): หยุดรอเปิดหน้าหลักค้าง
+  window.addEventListener('pageshow', ev => { if (ev.persisted && opening){ busy = false; const s = saved(); if (s) resume(s); else showForm(''); } });
+
+  if (!fromHome) $('#howto').hidden = false;
+  const q = new URLSearchParams(location.search);
+  if (q.has('out')){ st.del(KEY); try { history.replaceState(null, '', location.pathname); } catch (e) {} showForm(''); msg = ''; }
+  else { const s = saved(); if (s) resume(s); else showForm(''); }
 </script>
 </body>
 </html>
